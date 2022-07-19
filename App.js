@@ -32,6 +32,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
       </Tab.Navigator>
+      <StatusBar style="light" />
     </NavigationContainer>
   );
 }
