@@ -25,7 +25,7 @@ const useSTabScreenOptions = () => {
       bottom: 30,
       marginHorizontal: 40,
       height: 60,
-      backgroundColor: "rgba(47,46,49,0.7)",
+      backgroundColor: "rgba(47,46,49,0.9)",
       borderRadius: 10,
       border: 0,
       borderTopWidth: 0,

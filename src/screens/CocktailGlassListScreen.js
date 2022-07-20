@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
 import BackgroundGradient from "../components/BackgroundGradient";
 import VerticalBarLeft from "../components/VerticalBarLeft";
 import Constants from "expo-constants";
 import Title from "../components/Title";
 import { colors } from "../constants/colors";
+import { useSelector } from "react-redux";
+import DrinkCard from "../components/DrinkCard";
 
 const CocktailGlassListScreen = () => {
+  const cocktailsList = useSelector((state) => state.cocktailsList.value);
+
   return (
     <BackgroundGradient>
       <View
@@ -19,9 +23,17 @@ const CocktailGlassListScreen = () => {
         />
         <Title text="Choose your drink" />
         <View style={styles.listContainer}>
-          <Text style={{ fontSize: 30, color: "white", fontWeight: "bold" }}>
-            Cocktail
-          </Text>
+          <FlatList
+            data={cocktailsList}
+            renderItem={({ item }) => (
+              <DrinkCard
+                key={item.id}
+                name={item.strDrink}
+                id={item.idDrink}
+                imgLink={item.strDrinkThumb}
+              />
+            )}
+          />
         </View>
       </View>
     </BackgroundGradient>
@@ -35,9 +47,9 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 8,
-    justifyContent: "center",
     alignItems: "center",
     marginLeft: 55,
+    paddingLeft: 30,
   },
 });
 
