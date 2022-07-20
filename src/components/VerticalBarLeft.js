@@ -1,11 +1,41 @@
-import { StyleSheet, Text, View, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const VerticalBarLeft = () => {
+const VerticalBarLeft = ({ cocktailConf, longConf, nonConf }) => {
   const navigation = useNavigation();
+
+  const cocktailColors = {
+    icon: cocktailConf.borderLeftColor === "#fdde69" ? "black" : "gray",
+    text:
+      cocktailConf.borderLeftColor === "#fdde69"
+        ? {
+            color: "black",
+          }
+        : { color: "gray" },
+  };
+
+  const longColors = {
+    icon: longConf.borderLeftColor === "#fdde69" ? "black" : "gray",
+    text:
+      longConf.borderLeftColor === "#fdde69"
+        ? {
+            color: "black",
+          }
+        : { color: "gray" },
+  };
+
+  const nonColors = {
+    icon: nonConf.borderLeftColor === "#fdde69" ? "black" : "gray",
+    text:
+      nonConf.borderLeftColor === "#fdde69"
+        ? {
+            color: "black",
+          }
+        : { color: "gray" },
+  };
 
   const cocktailNavigate = () => {
     navigation.navigate("Cocktail");
@@ -19,39 +49,34 @@ const VerticalBarLeft = () => {
 
   return (
     <View style={[styles.container]}>
-      <TouchableHighlight
-        onPress={cocktailNavigate}
-        style={[styles.button, { borderLeftColor: "#fdde69", zIndex: 30 }]}
-      >
-        <View style={styles.infoBox}>
-          <Icon name={"glass-martini-alt"} size={25} color={"black"} />
-          <Text style={[styles.text, { color: "black" }]}>Cocktail</Text>
+      <TouchableWithoutFeedback onPress={cocktailNavigate}>
+        <View style={[styles.button, cocktailConf]}>
+          <View style={styles.infoBox}>
+            <Icon
+              name={"glass-martini-alt"}
+              size={25}
+              color={cocktailColors.icon}
+            />
+            <Text style={[styles.text, cocktailColors.text]}>Cocktail</Text>
+          </View>
         </View>
-      </TouchableHighlight>
-      <TouchableHighlight
-        onPress={longNavigate}
-        style={[
-          styles.button,
-          { borderLeftColor: "#20212c", zIndex: 20, top: -15 },
-        ]}
-      >
-        <View style={styles.infoBox}>
-          <Icon name={"wine-glass-alt"} size={25} color={"gray"} />
-          <Text style={[styles.text]}>Long</Text>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={longNavigate}>
+        <View style={[styles.button, longConf]}>
+          <View style={styles.infoBox}>
+            <Icon name={"wine-glass-alt"} size={25} color={longColors.icon} />
+            <Text style={[styles.text, longColors.text]}>Long</Text>
+          </View>
         </View>
-      </TouchableHighlight>
-      <TouchableHighlight
-        onPress={nonAlcoholNavigate}
-        style={[
-          styles.button,
-          { borderLeftColor: "#16151c", zIndex: 10, top: -30 },
-        ]}
-      >
-        <View style={styles.infoBox}>
-          <Ionicons name={"cafe-outline"} size={25} color={"gray"} />
-          <Text style={[styles.text]}>Non Alcohol</Text>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={nonAlcoholNavigate}>
+        <View style={[styles.button, nonConf]}>
+          <View style={styles.infoBox}>
+            <Ionicons name={"cafe-outline"} size={25} color={nonColors.icon} />
+            <Text style={[styles.text, nonColors.text]}>Non Alcohol</Text>
+          </View>
         </View>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     </View>
   );
 };

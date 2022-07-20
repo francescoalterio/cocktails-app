@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CocktailGlassListScreen from "./CocktailGlassListScreen";
@@ -11,10 +11,12 @@ const Stack = createNativeStackNavigator();
 const HomeScreen = () => {
   const randomDrinks = useSelector((state) => state.randomDrinks.value);
 
-  console.log(randomDrinks);
+  useEffect(() => {
+    console.log(randomDrinks);
+  }, []);
 
   return (
-    <Stack.Navigator screenOptions={{ animationEnabled: false }}>
+    <Stack.Navigator screenOptions={{ animation: "none" }}>
       <Stack.Screen
         name="Cocktail"
         component={CocktailGlassListScreen}

@@ -7,8 +7,16 @@ const NonAlcoholListScreen = () => {
   return (
     <BackgroundGradient>
       <View style={styles.container}>
-        <VerticalBarLeft />
-        <Text>NonAlcoholListScreen</Text>
+        <VerticalBarLeft
+          cocktailConf={{ borderLeftColor: "#16151c", zIndex: 10 }}
+          longConf={{ borderLeftColor: "#20212c", zIndex: 20, top: -15 }}
+          nonConf={{ borderLeftColor: "#fdde69", zIndex: 30, top: -30 }}
+        />
+        <View style={styles.listContainer}>
+          <Text style={{ fontSize: 30, color: "white", fontWeight: "bold" }}>
+            Non Alcohol
+          </Text>
+        </View>
       </View>
     </BackgroundGradient>
   );
@@ -21,5 +29,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  listContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: 55,
   },
 });
