@@ -11,14 +11,19 @@ import useTabScreenOptions from "./hooks/useTabScreenOptions";
 
 import store from "./store";
 import { Provider } from "react-redux";
-import CocktailGlassListScreen from "./screens/CocktailGlassListScreen";
+import { useFonts } from "expo-font";
+import BackgroundGradient from "./components/BackgroundGradient";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [loaded] = useFonts({
+    Nanum: require("../assets/fonts/NanumMyeongjo-Regular.ttf"),
+  });
+
   const tabScreenOptions = useTabScreenOptions();
 
-  return (
+  return loaded ? (
     <Provider store={store}>
       <NavigationContainer>
         <Tab.Navigator screenOptions={tabScreenOptions}>
@@ -41,6 +46,8 @@ export default function App() {
         <StatusBar style="light" />
       </NavigationContainer>
     </Provider>
+  ) : (
+    <BackgroundGradient />
   );
 }
 
