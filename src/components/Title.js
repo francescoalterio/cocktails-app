@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { colors } from "../constants/colors";
 
 const Title = ({ text }) => {
   return (
@@ -11,7 +12,9 @@ const Title = ({ text }) => {
         justifyContent: "center",
       }}
     >
-      <Text style={{ color: "#d1d1d1", fontSize: 50, fontFamily: "Nanum" }}>
+      <Text
+        style={{ color: colors.LIGHT_GRAY, fontSize: 50, fontFamily: "Nanum" }}
+      >
         {text}
       </Text>
     </View>

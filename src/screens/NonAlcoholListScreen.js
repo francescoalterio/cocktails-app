@@ -4,6 +4,7 @@ import BackgroundGradient from "../components/BackgroundGradient";
 import VerticalBarLeft from "../components/VerticalBarLeft";
 import Constants from "expo-constants";
 import Title from "../components/Title";
+import { colors } from "../constants/colors";
 
 const NonAlcoholListScreen = () => {
   return (
@@ -12,9 +13,9 @@ const NonAlcoholListScreen = () => {
         style={[styles.container, { paddingTop: Constants.statusBarHeight }]}
       >
         <VerticalBarLeft
-          cocktailConf={{ borderLeftColor: "#16151c", zIndex: 10 }}
-          longConf={{ borderLeftColor: "#20212c", zIndex: 20, top: -15 }}
-          nonConf={{ borderLeftColor: "#fdde69", zIndex: 30, top: -30 }}
+          cocktailConf={{ borderLeftColor: colors.DRAK_GRAY, zIndex: 10 }}
+          longConf={{ borderLeftColor: colors.GRAY, zIndex: 20, top: -15 }}
+          nonConf={{ borderLeftColor: colors.GOLD, zIndex: 30, top: -30 }}
         />
         <Title text="Choose your drink" />
         <View style={styles.listContainer}>

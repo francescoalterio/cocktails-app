@@ -1,5 +1,6 @@
 import Ionicons from "react-native-vector-icons/Ionicons";
 import React from "react";
+import { colors } from "../constants/colors";
 
 const useSTabScreenOptions = () => {
   const setIconTabBar = ({ route }) => ({
@@ -17,8 +18,8 @@ const useSTabScreenOptions = () => {
       // You can return any component that you like here!
       return <Ionicons name={iconName} size={size} color={color} />;
     },
-    tabBarActiveTintColor: "#fdde69",
-    tabBarInactiveTintColor: "#d1d1d1",
+    tabBarActiveTintColor: colors.GOLD,
+    tabBarInactiveTintColor: colors.LIGHT_GRAY,
     tabBarStyle: {
       position: "absolute",
       bottom: 30,
