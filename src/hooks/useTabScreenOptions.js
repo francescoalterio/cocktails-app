@@ -19,7 +19,7 @@ const useSTabScreenOptions = () => {
       return <Ionicons name={iconName} size={size} color={color} />;
     },
     tabBarActiveTintColor: colors.GOLD,
-    tabBarInactiveTintColor: colors.LIGHT_GRAY,
+    tabBarInactiveTintColor: colors.WHITE,
     tabBarStyle: {
       position: "absolute",
       bottom: 30,

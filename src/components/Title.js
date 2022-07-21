@@ -12,9 +12,7 @@ const Title = ({ text }) => {
         justifyContent: "center",
       }}
     >
-      <Text
-        style={{ color: colors.LIGHT_GRAY, fontSize: 50, fontFamily: "Nanum" }}
-      >
+      <Text style={{ color: colors.WHITE, fontSize: 50, fontFamily: "Nanum" }}>
         {text}
       </Text>
     </View>
