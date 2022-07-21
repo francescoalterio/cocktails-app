@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, FlatList } from "react-native";
 import React from "react";
 import BackgroundGradient from "../components/BackgroundGradient";
 import VerticalBarLeft from "../components/VerticalBarLeft";
 import Constants from "expo-constants";
 import Title from "../components/Title";
 import { colors } from "../constants/colors";
+import { useSelector } from "react-redux";
+import DrinkCard from "../components/DrinkCard";
 
 const NonAlcoholListScreen = () => {
+  const nonList = useSelector((state) => state.nonList.value);
   return (
     <BackgroundGradient>
       <View
@@ -19,9 +22,18 @@ const NonAlcoholListScreen = () => {
         />
         <Title text="Choose your drink" />
         <View style={styles.listContainer}>
-          <Text style={{ fontSize: 30, color: "white", fontWeight: "bold" }}>
-            Non Alcohol
-          </Text>
+          <FlatList
+            data={nonList}
+            renderItem={({ item }) => (
+              <DrinkCard
+                key={item.id}
+                name={item.strDrink}
+                id={item.idDrink}
+                imgLink={item.strDrinkThumb}
+              />
+            )}
+            showsVerticalScrollIndicator={false}
+          />
         </View>
       </View>
     </BackgroundGradient>

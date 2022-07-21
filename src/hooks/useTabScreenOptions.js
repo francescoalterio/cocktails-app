@@ -35,6 +35,7 @@ const useSTabScreenOptions = () => {
     tabBarLabel: () => {
       return null;
     },
+    orientation: "portrait",
   });
 
   return setIconTabBar;

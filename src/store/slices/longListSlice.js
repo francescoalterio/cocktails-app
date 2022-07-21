@@ -4,7 +4,7 @@ import fakeDB from "../../fakeDB";
 const longListSlice = createSlice({
   name: "longList",
   initialState: {
-    value: fakeDB,
+    value: [],
   },
   reducers: {
     setLongList: (state, actions) => {

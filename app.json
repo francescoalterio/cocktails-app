@@ -3,8 +3,7 @@
     "name": "cocktails-app",
     "slug": "cocktails-app",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
+    "assetBundlePatterns": ["**/*"],
+    "orientation": "portrait"
   }
 }

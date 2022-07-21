@@ -4,7 +4,7 @@ import fakeDB from "../../fakeDB";
 const nonListSlice = createSlice({
   name: "nonList",
   initialState: {
-    value: fakeDB,
+    value: [],
   },
   reducers: {
     setNonList: (state, actions) => {

@@ -4,7 +4,7 @@ import fakeDB from "../../fakeDB";
 const cocktailsListSlice = createSlice({
   name: "cocktailsList",
   initialState: {
-    value: fakeDB,
+    value: [],
   },
   reducers: {
     setCocktailsList: (state, actions) => {

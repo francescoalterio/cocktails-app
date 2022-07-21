@@ -33,6 +33,7 @@ const CocktailGlassListScreen = () => {
                 imgLink={item.strDrinkThumb}
               />
             )}
+            showsVerticalScrollIndicator={false}
           />
         </View>
       </View>

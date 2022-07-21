@@ -5,10 +5,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CocktailGlassListScreen from "./CocktailGlassListScreen";
 import LongGlassListScreen from "./LongGlassListScreen";
 import NonAlcoholListScreen from "./NonAlcoholListScreen";
+import useInitializeApp from "../hooks/useInitializeApp";
 
 const Stack = createNativeStackNavigator();
 
 const HomeScreen = () => {
+  useInitializeApp();
   return (
     <Stack.Navigator screenOptions={{ animation: "none" }}>
       <Stack.Screen
