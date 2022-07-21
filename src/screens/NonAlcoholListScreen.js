@@ -30,8 +30,10 @@ const NonAlcoholListScreen = () => {
                 name={item.strDrink}
                 id={item.idDrink}
                 imgLink={item.strDrinkThumb}
+                isFavorite={item.isFavorite}
               />
             )}
+            keyExtractor={(item) => item.idDrink + item.strDrink}
             showsVerticalScrollIndicator={false}
           />
         </View>

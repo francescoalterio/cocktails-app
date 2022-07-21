@@ -1,9 +1,12 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../constants/colors";
+import useFavoriteSystem from "../hooks/useFavoriteSystem";
 
-const DrinkCard = ({ id, name, imgLink, size }) => {
+const DrinkCard = ({ id, name, imgLink, size, isFavorite }) => {
+  const { handleFavorite } = useFavoriteSystem(id, isFavorite);
+
   return (
     <View style={[styles.container, { width: 250, height: 300 }]}>
       <Image
@@ -23,9 +26,13 @@ const DrinkCard = ({ id, name, imgLink, size }) => {
         <View style={styles.textBox}>
           <Text style={styles.text}>{name}</Text>
         </View>
-        <View style={styles.iconBox}>
-          <Ionicons name={"heart-outline"} size={30} color={"white"} />
-        </View>
+        <TouchableOpacity onPress={handleFavorite} style={styles.iconBox}>
+          <Ionicons
+            name={isFavorite ? "heart" : "heart-outline"}
+            size={30}
+            color={"white"}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );

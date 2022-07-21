@@ -26,12 +26,13 @@ const LongGlassListScreen = () => {
             data={longList}
             renderItem={({ item }) => (
               <DrinkCard
-                key={item.id}
                 name={item.strDrink}
                 id={item.idDrink}
                 imgLink={item.strDrinkThumb}
+                isFavorite={item.isFavorite}
               />
             )}
+            keyExtractor={(item) => item.idDrink + item.strDrink}
             showsVerticalScrollIndicator={false}
           />
         </View>
