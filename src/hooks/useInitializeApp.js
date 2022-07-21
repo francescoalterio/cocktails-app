@@ -4,6 +4,8 @@ import { setCocktailsList } from "../store/slices/cocktailsListSlice";
 import { setLongList } from "../store/slices/longListSlice";
 import { setNonList } from "../store/slices/nonListSlice";
 import { selectFavorites } from "../utils/selectFavorites";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setFavoriteDrinks } from "../store/slices/favoriteDrinksSlice";
 
 const cocktailsURL =
   "https://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass";
@@ -50,6 +52,10 @@ const useInitializeApp = () => {
           dispatch(setNonList([...favoritesDesordered]));
         });
       });
+
+    AsyncStorage.getItem("favoriteDrinks")
+      .then((res) => JSON.parse(res))
+      .then((result) => result && dispatch(setFavoriteDrinks(result)));
   }, []);
 
   return;

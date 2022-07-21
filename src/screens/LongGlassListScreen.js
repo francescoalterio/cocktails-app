@@ -20,7 +20,7 @@ const LongGlassListScreen = () => {
           longConf={{ borderLeftColor: colors.GOLD, zIndex: 30, top: -15 }}
           nonConf={{ borderLeftColor: colors.GRAY, zIndex: 20, top: -30 }}
         />
-        <Title text="Choose your drink" />
+        <Title text="Choose your drink" flexHeight={3} fSize={45} />
         <View style={styles.listContainer}>
           <FlatList
             data={longList}
@@ -30,6 +30,7 @@ const LongGlassListScreen = () => {
                 id={item.idDrink}
                 imgLink={item.strDrinkThumb}
                 isFavorite={item.isFavorite}
+                size="large"
               />
             )}
             keyExtractor={(item) => item.idDrink + item.strDrink}
