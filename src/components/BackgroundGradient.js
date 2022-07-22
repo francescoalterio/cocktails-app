@@ -7,7 +7,7 @@ const BackgroundGradient = ({ children }) => {
     <LinearGradient
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 1 }}
-      colors={["#25162f", "#0f0e15", "#101a25"]}
+      colors={["#2e0f42", "#0f0e15", "#101a25"]}
       style={{ flex: 1 }}
     >
       {children}
