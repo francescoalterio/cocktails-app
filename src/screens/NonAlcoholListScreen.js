@@ -20,7 +20,7 @@ const NonAlcoholListScreen = () => {
           longConf={{ borderLeftColor: colors.GRAY, zIndex: 20, top: -15 }}
           nonConf={{ borderLeftColor: colors.GOLD, zIndex: 30, top: -30 }}
         />
-        <Title text="Choose your drink" flexHeight={3} fSize={45} />
+        <Title text="Choose your drink" flexHeight={3} fSize={45} mLeft={20} />
         <View style={styles.listContainer}>
           <FlatList
             data={nonList}

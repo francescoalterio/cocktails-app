@@ -13,7 +13,7 @@ const FavoritesScreen = () => {
       <View
         style={[styles.container, { paddingTop: Constants.statusBarHeight }]}
       >
-        <Title text="My favorites" flexHeight={2} fSize={40} />
+        <Title text="My favorites" flexHeight={2} fSize={40} mLeft={25} />
         <View style={styles.listContainer}>
           <TwoColumsList data={favoriteDrinks} />
         </View>

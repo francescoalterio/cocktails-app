@@ -21,7 +21,7 @@ const CocktailGlassListScreen = () => {
           longConf={{ borderLeftColor: colors.GRAY, zIndex: 20, top: -15 }}
           nonConf={{ borderLeftColor: colors.DRAK_GRAY, zIndex: 10, top: -30 }}
         />
-        <Title text="Choose your drink" flexHeight={3} fSize={45} />
+        <Title text="Choose your drink" flexHeight={3} fSize={45} mLeft={20} />
         <View style={styles.listContainer}>
           <FlatList
             data={cocktailsList}
