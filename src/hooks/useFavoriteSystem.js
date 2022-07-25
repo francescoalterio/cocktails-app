@@ -32,7 +32,7 @@ const useFavoriteSystem = (id, isFavorite) => {
   const handleFavorite = async () => {
     const favoriteDrinks = await AsyncStorage.getItem("favoriteDrinks");
     const drinksParsed = JSON.parse(favoriteDrinks);
-    if (!isFavorite) {
+    if (!favoriteState) {
       setFavoriteState(true);
       try {
         const drink = await fetch(
