@@ -17,13 +17,11 @@ import { colors } from "../constants/colors";
 const SearchScreen = () => {
   const [drinks, setDrinks] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [searchWord, setSearchWord] = useState("M");
+  const [searchWord, setSearchWord] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(
-      `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchWord}`
-    )
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`)
       .then((res) => res.json())
       .then((result) => {
         setIsLoading(false);
