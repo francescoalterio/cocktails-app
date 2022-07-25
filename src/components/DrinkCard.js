@@ -3,9 +3,12 @@ import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../constants/colors";
 import useFavoriteSystem from "../hooks/useFavoriteSystem";
+import { useNavigation } from "@react-navigation/native";
 
 const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
   const { handleFavorite, favoriteState } = useFavoriteSystem(id, isFavorite);
+
+  const navigation = useNavigation();
 
   const sizeStyles = {
     width: size === "large" ? 250 : "47%",
@@ -15,13 +18,21 @@ const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
     marginTop: index === 1 ? 30 : index % 2 == 0 && index > 0 ? -20 : 5,
   };
 
+  const handlePress = () => {
+    navigation.navigate("DrinkScreen", {
+      id,
+      isFavorite,
+    });
+  };
+
   return (
     <View style={[styles.container, sizeStyles]}>
       <Image
         source={{ uri: imgLink }}
         style={[{ width: "100%", height: "100%" }, { borderRadius: 20 }]}
       />
-      <View
+      <TouchableOpacity
+        onPress={handlePress}
         style={{
           width: "100%",
           height: "100%",
@@ -29,7 +40,7 @@ const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
           position: "absolute",
           borderRadius: 20,
         }}
-      ></View>
+      ></TouchableOpacity>
       <View style={styles.infoContainer}>
         <View style={styles.textBox}>
           <Text style={styles.text}>{name}</Text>
