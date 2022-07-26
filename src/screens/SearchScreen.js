@@ -13,12 +13,16 @@ import Constants from "expo-constants";
 import TwoColumsList from "../components/TwoColumsList";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../constants/colors";
+import { useNetInfo } from "@react-native-community/netinfo";
+import NotConnection from "./NotConnection";
 
 const SearchScreen = () => {
   const [drinks, setDrinks] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchWord, setSearchWord] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+
+  const netInfo = useNetInfo();
 
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`)
@@ -40,7 +44,9 @@ const SearchScreen = () => {
       });
   };
 
-  return (
+  return netInfo.isConnected == false ? (
+    <NotConnection />
+  ) : (
     <BackgroundGradient>
       <View
         style={[styles.container, { paddingTop: Constants.statusBarHeight }]}

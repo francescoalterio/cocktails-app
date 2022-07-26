@@ -8,10 +8,17 @@ import { colors } from "../constants/colors";
 import { useSelector } from "react-redux";
 import DrinkCard from "../components/DrinkCard";
 
+import { useNetInfo } from "@react-native-community/netinfo";
+import NotConnection from "./NotConnection";
+
 const CocktailGlassListScreen = () => {
   const cocktailsList = useSelector((state) => state.cocktailsList.value);
 
-  return (
+  const netInfo = useNetInfo();
+
+  return netInfo.isConnected === false ? (
+    <NotConnection />
+  ) : (
     <BackgroundGradient>
       <View
         style={[styles.container, { paddingTop: Constants.statusBarHeight }]}
