@@ -5,6 +5,8 @@ import {
   Text,
   View,
   TouchableOpacity,
+  FlatList,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -17,6 +19,7 @@ import Title from "../components/Title";
 import { colors } from "../constants/colors";
 import DrinkShortInfo from "../components/DrinkShortInfo";
 import { parseIngredientsData } from "../utils/parseIngredientsData";
+import IngredientCard from "../components/IngredientCard";
 
 const Drink = () => {
   const [drink, setDrink] = useState();
@@ -53,7 +56,7 @@ const Drink = () => {
     navigation.goBack();
   };
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{ flex: 1 }}>
       <View style={{ flexDirection: "row" }}>
         <Image source={{ uri: drink?.strDrinkThumb }} style={styles.image} />
       </View>
@@ -105,8 +108,28 @@ const Drink = () => {
           <Text style={styles.ingredientsTitle}>Ingredients</Text>
           <Text style={styles.itemsLength}>{ingredients.length} items</Text>
         </View>
+        <View style={{ marginBottom: 20 }}>
+          <FlatList
+            data={ingredients}
+            keyExtractor={(item) => item.ingredient + item.measure}
+            renderItem={({ item }) => (
+              <IngredientCard
+                ingredient={item.ingredient}
+                measure={item.measure}
+              />
+            )}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.ingredientsTitleContainer}>
+          <Text style={styles.ingredientsTitle}>Instructions</Text>
+        </View>
+        <View style={styles.instructionsContainer}>
+          <Text style={styles.instructions}>{drink?.strInstructions}</Text>
+        </View>
       </LinearGradient>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -162,6 +185,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    marginBottom: 15,
   },
   ingredientsTitle: {
     fontSize: 17,
@@ -170,5 +194,14 @@ const styles = StyleSheet.create({
   itemsLength: {
     fontSize: 13,
     color: "rgba(163, 163, 163, 0.7)",
+  },
+  instructionsContainer: {
+    backgroundColor: "rgba(37,30,44,0.8)",
+    marginBottom: 20,
+    borderRadius: 15,
+    padding: 15,
+  },
+  instructions: {
+    color: colors.WHITE,
   },
 });
