@@ -16,7 +16,7 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [loaded] = useFonts({
-    Nanum: require("../assets/fonts/NanumMyeongjo-Regular.ttf"),
+    Nanum: require("./assets/fonts/NanumMyeongjo-Regular.ttf"),
   });
 
   return loaded ? (
