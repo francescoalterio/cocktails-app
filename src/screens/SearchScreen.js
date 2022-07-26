@@ -79,8 +79,15 @@ const SearchScreen = () => {
             </View>
           </View>
         ) : !drinks ? (
-          <View style={[styles.listContainer]}>
-            <Text>There is no drink with {searchWord}</Text>
+          <View
+            style={[styles.listContainer, { marginLeft: 25, marginRight: 25 }]}
+          >
+            <Text style={{ color: colors.WHITE, fontSize: 18 }}>
+              We did not find any drink with{" "}
+              <Text style={{ color: colors.GOLD, fontSize: 18 }}>
+                {searchWord}
+              </Text>
+            </Text>
           </View>
         ) : (
           <View style={styles.listContainer}>

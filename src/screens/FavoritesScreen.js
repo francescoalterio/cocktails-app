@@ -5,6 +5,7 @@ import Title from "../components/Title";
 import Constants from "expo-constants";
 import TwoColumsList from "../components/TwoColumsList";
 import { useSelector } from "react-redux";
+import { colors } from "../constants/colors";
 
 const FavoritesScreen = () => {
   const favoriteDrinks = useSelector((state) => state.favoriteDrinks.value);
@@ -15,7 +16,23 @@ const FavoritesScreen = () => {
       >
         <Title text="My favorites" flexHeight={2} fSize={40} mLeft={25} />
         <View style={styles.listContainer}>
-          <TwoColumsList data={favoriteDrinks} />
+          {favoriteDrinks.length > 0 ? (
+            <TwoColumsList data={favoriteDrinks} />
+          ) : (
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{ color: colors.WHITE, fontSize: 18, paddingBottom: 90 }}
+              >
+                You don't have favorite drinks
+              </Text>
+            </View>
+          )}
         </View>
       </View>
     </BackgroundGradient>
