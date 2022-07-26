@@ -16,6 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Title from "../components/Title";
 import { colors } from "../constants/colors";
 import DrinkShortInfo from "../components/DrinkShortInfo";
+import { parseIngredientsData } from "../utils/parseIngredientsData";
 
 const Drink = () => {
   const [drink, setDrink] = useState();
@@ -44,6 +45,9 @@ const Drink = () => {
         .then((result) => setDrink(result.drinks[0]));
     }
   }, [route.params]);
+
+  const ingredients = drink ? parseIngredientsData(drink) : [];
+  console.log(ingredients);
 
   const handleGoBack = () => {
     navigation.goBack();
@@ -99,7 +103,7 @@ const Drink = () => {
         </View>
         <View style={styles.ingredientsTitleContainer}>
           <Text style={styles.ingredientsTitle}>Ingredients</Text>
-          <Text style={styles.itemsLength}>5 items</Text>
+          <Text style={styles.itemsLength}>{ingredients.length} items</Text>
         </View>
       </LinearGradient>
     </View>
