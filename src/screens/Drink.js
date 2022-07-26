@@ -15,6 +15,7 @@ import useFavoriteSystem from "../hooks/useFavoriteSystem";
 import { LinearGradient } from "expo-linear-gradient";
 import Title from "../components/Title";
 import { colors } from "../constants/colors";
+import DrinkShortInfo from "../components/DrinkShortInfo";
 
 const Drink = () => {
   const [drink, setDrink] = useState();
@@ -75,38 +76,30 @@ const Drink = () => {
       >
         <Title text={drink?.strDrink} fSize={25} />
         <View style={styles.shortInfoContainer}>
-          <View style={[styles.shorInfo]}>
-            <Text style={styles.titleShortInfo}>Category</Text>
-            <Text style={styles.valueShortInfo}>
-              {drink && drink.strCategory.split(" ")[0]}
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.shorInfo,
-              {
-                borderLeftWidth: 2,
-                borderLeftColor: "rgba(120, 120, 120, 0.5)",
-              },
-            ]}
-          >
-            <Text style={styles.titleShortInfo}>Glass</Text>
-            <Text style={styles.valueShortInfo}>
-              {drink && drink.strGlass.split(" ")[0]}
-            </Text>
-          </View>
-          <View
-            style={[
-              styles.shorInfo,
-              {
-                borderLeftWidth: 2,
-                borderLeftColor: "rgba(120, 120, 120, 0.5)",
-              },
-            ]}
-          >
-            <Text style={styles.titleShortInfo}>Type</Text>
-            <Text style={styles.valueShortInfo}>{drink?.strAlcoholic}</Text>
-          </View>
+          <DrinkShortInfo
+            title="Category"
+            value={drink && drink.strCategory.split(" ")[0]}
+          />
+          <DrinkShortInfo
+            title="Glass"
+            value={drink && drink.strGlass.split(" ")[0]}
+            extraStyle={{
+              borderLeftWidth: 2,
+              borderLeftColor: "rgba(120, 120, 120, 0.5)",
+            }}
+          />
+          <DrinkShortInfo
+            title="Type"
+            value={drink?.strAlcoholic}
+            extraStyle={{
+              borderLeftWidth: 2,
+              borderLeftColor: "rgba(120, 120, 120, 0.5)",
+            }}
+          />
+        </View>
+        <View style={styles.ingredientsTitleContainer}>
+          <Text style={styles.ingredientsTitle}>Ingredients</Text>
+          <Text style={styles.itemsLength}>5 items</Text>
         </View>
       </LinearGradient>
     </View>
@@ -156,22 +149,22 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 100,
     marginTop: 20,
+    marginBottom: 20,
     flexDirection: "row",
     alignItems: "center",
   },
-  shorInfo: {
+  ingredientsTitleContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    width: "33%",
   },
-  titleShortInfo: {
+  ingredientsTitle: {
+    fontSize: 17,
+    color: colors.WHITE,
+  },
+  itemsLength: {
     fontSize: 13,
-    color: "rgba(163, 163, 163, 0.8)",
-    fontWeight: "bold",
-  },
-  valueShortInfo: {
-    fontSize: 15,
-    color: "rgba(253, 222, 105, 0.9)",
-    marginTop: 5,
-    fontWeight: "bold",
+    color: "rgba(163, 163, 163, 0.7)",
   },
 });
