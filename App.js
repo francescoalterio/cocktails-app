@@ -5,12 +5,12 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import store from "./store";
+import store from "./src/store";
 import { Provider } from "react-redux";
 import { useFonts } from "expo-font";
-import BackgroundGradient from "./components/BackgroundGradient";
-import TabBar from "./screens/TabBar";
-import Drink from "./screens/Drink";
+import BackgroundGradient from "./src/components/BackgroundGradient";
+import TabBar from "./src/screens/TabBar";
+import Drink from "./src/screens/Drink";
 
 const Stack = createNativeStackNavigator();
 
