@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colors } from "../constants/colors";
 
-const IngredientCard = ({ ingredient, measure }) => {
+const IngredientCard = ({ ingredient, measure, isLastItem }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { marginRight: isLastItem ? 0 : 20 }]}>
       <Text style={styles.ingredient}>{ingredient}</Text>
       <Text style={styles.measure}>{measure}</Text>
     </View>
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     height: 120,
     width: 100,
     borderRadius: 15,
-    marginRight: 20,
     justifyContent: "space-evenly",
     alignItems: "center",
     paddingHorizontal: 10,

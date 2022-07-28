@@ -112,10 +112,11 @@ const Drink = () => {
           <FlatList
             data={ingredients}
             keyExtractor={(item) => item.ingredient + item.measure}
-            renderItem={({ item }) => (
+            renderItem={({ item, index }) => (
               <IngredientCard
                 ingredient={item.ingredient}
                 measure={item.measure}
+                isLastItem={index === ingredients.length - 1}
               />
             )}
             horizontal
