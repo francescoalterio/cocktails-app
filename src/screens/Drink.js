@@ -172,6 +172,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     paddingHorizontal: 25,
     paddingTop: 30,
+    paddingBottom: 40,
   },
   shortInfoContainer: {
     width: "100%",
