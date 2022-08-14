@@ -17,7 +17,7 @@ const twoColumsList = ({ data }) => {
           />
         )}
         numColumns={2}
-        keyExtractor={(item) => item.idDrink + item.strDrink}
+        keyExtractor={(item) => item.idDrink + item.isFavorite}
         showsVerticalScrollIndicator={false}
       />
     </View>

@@ -27,7 +27,8 @@ const useInitializeApp = () => {
           const favoritesDesordered = result.sort(function (a, b) {
             return Math.random() - 0.5;
           });
-          dispatch(setCocktailsList([...favoritesDesordered]));
+          const drinksSliced = favoritesDesordered.slice(0, 10);
+          dispatch(setCocktailsList([...drinksSliced]));
         });
       });
 
@@ -38,7 +39,8 @@ const useInitializeApp = () => {
           const favoritesDesordered = result.sort(function (a, b) {
             return Math.random() - 0.5;
           });
-          dispatch(setLongList([...favoritesDesordered]));
+          const drinksSliced = favoritesDesordered.slice(0, 10);
+          dispatch(setLongList([...drinksSliced]));
         });
       });
 
@@ -49,7 +51,8 @@ const useInitializeApp = () => {
           const favoritesDesordered = result.sort(function (a, b) {
             return Math.random() - 0.5;
           });
-          dispatch(setNonList([...favoritesDesordered]));
+          const drinksSliced = favoritesDesordered.slice(0, 10);
+          dispatch(setNonList([...drinksSliced]));
         });
       });
 

@@ -9,6 +9,7 @@ const longListSlice = createSlice({
   reducers: {
     setLongList: (state, actions) => {
       state.value = actions.payload;
+      console.log(state.value);
     },
   },
 });

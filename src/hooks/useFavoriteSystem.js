@@ -6,6 +6,7 @@ import { setLongList } from "../store/slices/longListSlice";
 import { setNonList } from "../store/slices/nonListSlice";
 import { setFavoriteDrinks } from "../store/slices/favoriteDrinksSlice";
 import { useState } from "react";
+import { setFlatlistRefresh } from "../store/slices/flatListRefreshSlice";
 
 const useFavoriteSystem = (id, isFavorite) => {
   const [favoriteState, setFavoriteState] = useState(isFavorite);
@@ -32,6 +33,7 @@ const useFavoriteSystem = (id, isFavorite) => {
   const handleFavorite = async () => {
     const favoriteDrinks = await AsyncStorage.getItem("favoriteDrinks");
     const drinksParsed = JSON.parse(favoriteDrinks);
+    console.log(isFavorite);
     if (!favoriteState) {
       setFavoriteState(true);
       try {
@@ -48,6 +50,7 @@ const useFavoriteSystem = (id, isFavorite) => {
         setFavoriteState(false);
       }
     } else {
+      console.log("entre");
       setFavoriteState(false);
       const removeFavorite = drinksParsed.filter((x) => x.idDrink !== id);
       setGlobalStates(removeFavorite);

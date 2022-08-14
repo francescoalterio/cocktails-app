@@ -15,7 +15,8 @@ const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
     height: size === "large" ? 300 : 200,
     marginBottom: size === "large" ? 20 : undefined,
     margin: size === "large" ? undefined : 5,
-    marginTop: index === 1 ? 30 : index % 2 == 0 && index > 0 ? -20 : 5,
+    marginTop:
+      index && index === 1 ? 30 : index % 2 == 0 && index > 0 ? -20 : 5,
   };
 
   const handlePress = () => {

@@ -34,7 +34,7 @@ const NonAlcoholListScreen = () => {
                 size="large"
               />
             )}
-            keyExtractor={(item) => item.idDrink + item.strDrink}
+            keyExtractor={(item) => item.idDrink + item.isFavorite}
             showsVerticalScrollIndicator={false}
           />
         </View>

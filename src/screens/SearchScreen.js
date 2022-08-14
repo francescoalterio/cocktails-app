@@ -15,6 +15,8 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../constants/colors";
 import { useNetInfo } from "@react-native-community/netinfo";
 import NotConnection from "./NotConnection";
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../utils/selectFavorites";
 
 const SearchScreen = () => {
   const [drinks, setDrinks] = useState([]);
@@ -22,25 +24,38 @@ const SearchScreen = () => {
   const [searchWord, setSearchWord] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
+  const favoriteDrinks = useSelector((state) => state.favoriteDrinks.value);
+
   const netInfo = useNetInfo();
 
   useEffect(() => {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=`)
       .then((res) => res.json())
-      .then((result) => {
+      .then(async (result) => {
         setIsLoading(false);
-        setDrinks(result.drinks);
+        const favoritesFounded = await selectFavorites(result.drinks);
+        setDrinks(favoritesFounded);
       });
   }, []);
+
+  useEffect(() => {
+    const setFavorites = async () => {
+      const favoritesFounded = await selectFavorites(drinks);
+      setDrinks(favoritesFounded);
+    };
+
+    setFavorites();
+  }, [favoriteDrinks]);
 
   const handleSearch = () => {
     setIsLoading(true);
     setSearchWord(inputValue);
     fetch(`https://thecocktaildb.com/api/json/v1/1/search.php?s=${inputValue}`)
       .then((res) => res.json())
-      .then((result) => {
+      .then(async (result) => {
         setIsLoading(false);
-        setDrinks(result.drinks);
+        const favoritesFounded = await selectFavorites(result.drinks);
+        setDrinks(favoritesFounded);
       });
   };
 
