@@ -1,4 +1,4 @@
-package com.cocktailsapp;
+package com.franstudios.cocktaillibrary;
 
 import android.os.Build;
 import android.os.Bundle;

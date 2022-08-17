@@ -35,12 +35,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.cocktailsapp",
+    package = "com.franstudios.cocktaillibrary",
 )
 
 android_resource(
     name = "res",
-    package = "com.cocktailsapp",
+    package = "com.franstudios.cocktaillibrary",
     res = "src/main/res",
 )
 

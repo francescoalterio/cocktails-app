@@ -1,4 +1,4 @@
-package com.cocktailsapp.newarchitecture.modules;
+package com.franstudios.cocktaillibrary.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

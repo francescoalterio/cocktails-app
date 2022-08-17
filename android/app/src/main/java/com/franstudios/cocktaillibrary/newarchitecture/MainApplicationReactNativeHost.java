@@ -1,4 +1,4 @@
-package com.cocktailsapp.newarchitecture;
+package com.franstudios.cocktaillibrary.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.cocktailsapp.BuildConfig;
-import com.cocktailsapp.newarchitecture.components.MainComponentsRegistry;
-import com.cocktailsapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.franstudios.cocktaillibrary.BuildConfig;
+import com.franstudios.cocktaillibrary.newarchitecture.components.MainComponentsRegistry;
+import com.franstudios.cocktaillibrary.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
