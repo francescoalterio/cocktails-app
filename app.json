@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Cocktail Library - Recipes",
-    "slug": "expo.dev/@franstudios/CocktailLibrary",
+    "slug": "expo.dev/@franstudios/locktaillibrary",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "orientation": "portrait",
