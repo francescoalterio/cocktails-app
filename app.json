@@ -1,9 +1,22 @@
 {
   "expo": {
-    "name": "cocktails-app",
-    "slug": "cocktails-app",
+    "name": "Cocktail Library - Recipes",
+    "slug": "expo.dev/@franstudios/CocktailLibrary",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "versionCode": 1,
+      "package": "com.franstudios.cocktaillibrary"
+    }
   }
 }
