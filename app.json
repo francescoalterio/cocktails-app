@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Cocktail Library - Recipes",
-    "slug": "cocktaillibrary",
+    "slug": "cocktail-library",
     "version": "1.0.0",
     "assetBundlePatterns": ["**/*"],
     "orientation": "portrait",
