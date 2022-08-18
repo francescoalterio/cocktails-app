@@ -4,11 +4,13 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../constants/colors";
 import useFavoriteSystem from "../hooks/useFavoriteSystem";
 import { useNavigation } from "@react-navigation/native";
+import { ads } from "./AdsGrapper";
 
 const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
   const { handleFavorite, favoriteState } = useFavoriteSystem(id, isFavorite);
 
   const navigation = useNavigation();
+  const { isLoaded, isClosed, load, show } = useContext(ads);
 
   const sizeStyles = {
     width: size === "large" ? 250 : "47%",
@@ -19,11 +21,26 @@ const DrinkCard = ({ id, name, imgLink, size, isFavorite, index }) => {
       index && index === 1 ? 30 : index % 2 == 0 && index > 0 ? -20 : 5,
   };
 
+  React.useEffect(() => {
+    if (isClosed) {
+      // Action after the ad is closed
+      navigation.navigate("DrinkScreen", {
+        id,
+        isFavorite,
+      });
+    }
+  }, [isClosed, navigation]);
+
   const handlePress = () => {
-    navigation.navigate("DrinkScreen", {
-      id,
-      isFavorite,
-    });
+    if (isLoaded) {
+      show();
+    } else {
+      // No advert ready to show yet
+      navigation.navigate("DrinkScreen", {
+        id,
+        isFavorite,
+      });
+    }
   };
 
   return (

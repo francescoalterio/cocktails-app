@@ -11,6 +11,7 @@ import { useFonts } from "expo-font";
 import BackgroundGradient from "./components/BackgroundGradient";
 import TabBar from "./screens/TabBar";
 import Drink from "./screens/Drink";
+import AdsGrapper from "./components/AdsGrapper";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,17 +22,19 @@ export default function App() {
 
   return loaded ? (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="TabBar" component={TabBar} />
-          <Stack.Screen name="DrinkScreen" component={Drink} />
-        </Stack.Navigator>
-        <StatusBar style="light" />
-      </NavigationContainer>
+      <AdsGrapper>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="TabBar" component={TabBar} />
+            <Stack.Screen name="DrinkScreen" component={Drink} />
+          </Stack.Navigator>
+          <StatusBar style="light" />
+        </NavigationContainer>
+      </AdsGrapper>
     </Provider>
   ) : (
     <BackgroundGradient />
