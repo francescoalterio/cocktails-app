@@ -72,7 +72,9 @@ export default function App() {
     <BackgroundGradient>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#fdde69" />
-        <Text style={{ marginTop: 20 }}>Loading Cocktails</Text>
+        <Text style={{ marginTop: 20, color: "fdde69" }}>
+          Loading Cocktails
+        </Text>
       </View>
     </BackgroundGradient>
   );
