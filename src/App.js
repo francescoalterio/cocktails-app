@@ -1,6 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -12,29 +12,69 @@ import BackgroundGradient from "./components/BackgroundGradient";
 import TabBar from "./screens/TabBar";
 import Drink from "./screens/Drink";
 
+import mobileAds, {
+  AppOpenAd,
+  TestIds,
+  AdEventType,
+  useAppOpenAd,
+} from "react-native-google-mobile-ads";
+
 const Stack = createNativeStackNavigator();
 
+const adUnitId = TestIds.APP_OPEN;
+
 export default function App() {
-  const [loaded] = useFonts({
+  const [fontLoaded] = useFonts({
     Nanum: require("../assets/fonts/NanumMyeongjo-Regular.ttf"),
   });
 
-  return loaded ? (
-    <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="TabBar" component={TabBar} />
-          <Stack.Screen name="DrinkScreen" component={Drink} />
-        </Stack.Navigator>
-        <StatusBar style="light" />
-      </NavigationContainer>
-    </Provider>
+  const [adViewed, setAdViewed] = useState(false);
+  const { load, show, isLoaded, isClosed, error, isOpened } =
+    useAppOpenAd(adUnitId);
+
+  mobileAds()
+    .initialize()
+    .then((adapterStatuses) => {
+      load();
+    });
+
+  useEffect(() => {
+    if (isLoaded && !adViewed) show();
+  }, [isLoaded]);
+
+  useEffect(() => {
+    if (isOpened) setAdViewed(true);
+  }, [isOpened]);
+
+  useEffect(() => {
+    if (error) setAdViewed(true);
+  }, [error]);
+
+  return adViewed ? (
+    fontLoaded ? (
+      <Provider store={store}>
+        <NavigationContainer>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="TabBar" component={TabBar} />
+            <Stack.Screen name="DrinkScreen" component={Drink} />
+          </Stack.Navigator>
+          <StatusBar style="light" />
+        </NavigationContainer>
+      </Provider>
+    ) : (
+      <BackgroundGradient />
+    )
   ) : (
-    <BackgroundGradient />
+    <BackgroundGradient>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#fdde69" />
+        <Text style={{ marginTop: 20 }}>Loading Cocktails</Text>
+      </View>
+    </BackgroundGradient>
   );
 }
 

@@ -1,3 +1,6 @@
+.env
+app.json
+
 # OSX
 #
 .DS_Store
